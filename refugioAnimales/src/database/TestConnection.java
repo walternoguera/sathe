@@ -2,6 +2,7 @@ package database;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class TestConnection {
 
@@ -22,5 +23,5 @@ public class TestConnection {
         }
     }
     
-    
+
 }
