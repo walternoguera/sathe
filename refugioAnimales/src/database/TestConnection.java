@@ -8,7 +8,7 @@ public class TestConnection {
     public static void main(String[] args) {
         try {
             //Intenta obtener una conexión utilizando la clase de conexión
-            Connection conexion = ConexionDb.getConnection();
+            Connection conexion = Conexion.getConnection();
             System.out.println("Conexión exitosa");
 
             //cerramos conexion
@@ -21,4 +21,6 @@ public class TestConnection {
             System.out.println("Error al conectar la base de datos");
         }
     }
+    
+    
 }
