@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 public class Inventario extends javax.swing.JPanel {
 
     //Connection conect;
-    Conexion con1 = new Conexion();
+    //Conexion con1 = new Conexion();
     Connection conet;
     DefaultTableModel modelo;
     Statement st;
@@ -23,12 +23,12 @@ public class Inventario extends javax.swing.JPanel {
     }
 
     private void consultar() {
-        String sql = "SELECT * FROM animales;";
+        String query = "SELECT * FROM animales;";
 
         try {
-            conet = con1.getConnection();
+            conet = Conexion.getConnection();
             st = conet.createStatement();
-            rs = st.executeQuery(sql);
+            rs = st.executeQuery(query);
 
             Object[] mascota = new Object[6];
             modelo = (DefaultTableModel) TablaAnimal.getModel();
@@ -50,21 +50,21 @@ public class Inventario extends javax.swing.JPanel {
     } //muestra datos de la tabla
 
     private void agregar() {
-        String nombre = txtNombre.getText();
-        String raza = txtRaza.getText();
-        String clase = txtClase.getText();
+        String nombreCadena = txtNombre.getText();
+        String razaCadena = txtRaza.getText();
+        String claseCadena = txtClase.getText();
         String disponible = txtDisponibilidad.getText();
-        String edad = txtEdad.getText();
+        String edadCadena = txtEdad.getText();
 
         try {
-            if (nombre.equals("") || raza.equals("") || clase.equals("") || disponible.equals("") || edad.equals("")) {
+            if (nombreCadena.equals("") || razaCadena.equals("") || claseCadena.equals("") || disponible.equals("") || edadCadena.equals("")) {
                 JOptionPane.showMessageDialog(null, "Faltan datos");
                 limpiarTabla();
             } else {
-                String sql = "INSERT INTO animales(NOMBRE, RAZA, CLASE, EDAD, DISPONIBILIDAD) VALUES ('" + nombre + "', '" + raza + "', '" + clase + "', '" + disponible + "', '" + edad + "',)";
-                            conet = con1.getConnection();
+                String query = "INSERT INTO animales(NOMBRE, RAZA, CLASE, EDAD, DISPONIBILIDAD) VALUES ('" + nombreCadena + "', '" + razaCadena + "', '" + claseCadena + "', '" + disponible + "', '" + edadCadena + "')";
+                            conet = Conexion.getConnection();
             st = conet.createStatement();
-            st.executeUpdate(sql);
+            st.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Registro agregado correctamente");
                 limpiarTabla();
             }
@@ -125,11 +125,8 @@ public class Inventario extends javax.swing.JPanel {
 
         raza.setText("RAZA:");
 
-        txtRaza.setText("jTextField1");
-
         edad.setText("EDAD:");
 
-        txtEdad.setText("jTextField1");
         txtEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEdadActionPerformed(evt);
@@ -138,13 +135,10 @@ public class Inventario extends javax.swing.JPanel {
 
         clase.setText("CLASE:");
 
-        txtClase.setText("jTextField1");
-
         disponibilidad.setText("DISPONIBILIDAD:");
 
-        txtDisponibilidad.setText("jTextField1");
-
         btnAgregar.setText("añadir");
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
@@ -152,10 +146,13 @@ public class Inventario extends javax.swing.JPanel {
         });
 
         btnModificar.setText("editar");
+        btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnEliminar.setText("borrar");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnNuevo.setText("nuevo");
+        btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
