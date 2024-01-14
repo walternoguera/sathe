@@ -170,22 +170,27 @@ public class CitaVeterinaria extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registros Actuales:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(102, 102, 102))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(102, 102, 102));
 
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("ID:");
 
         txtId.setEditable(false);
         txtId.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtId.setEnabled(false);
 
+        nombre.setForeground(new java.awt.Color(102, 102, 102));
         nombre.setText("ID_ANIMAL");
 
+        raza.setForeground(new java.awt.Color(102, 102, 102));
         raza.setText("FECHA");
 
         clase.setText("CLASE:");
 
         edad.setText("EDAD:");
 
+        edad1.setForeground(new java.awt.Color(102, 102, 102));
         edad1.setText("OBSERVACIONES");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -254,7 +259,8 @@ public class CitaVeterinaria extends javax.swing.JPanel {
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 740, 220));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Registros Actuales:"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registros Actuales:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(102, 102, 102))); // NOI18N
+        jPanel2.setForeground(new java.awt.Color(102, 102, 102));
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -286,9 +292,11 @@ public class CitaVeterinaria extends javax.swing.JPanel {
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 740, 200));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
+        jPanel3.setBackground(new java.awt.Color(33, 36, 46));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(242, 242, 242))); // NOI18N
 
+        btnModificar.setBackground(new java.awt.Color(33, 36, 46));
+        btnModificar.setForeground(new java.awt.Color(186, 187, 190));
         btnModificar.setText("Modificar");
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -297,6 +305,8 @@ public class CitaVeterinaria extends javax.swing.JPanel {
             }
         });
 
+        btnAgregar.setBackground(new java.awt.Color(33, 36, 46));
+        btnAgregar.setForeground(new java.awt.Color(186, 187, 190));
         btnAgregar.setText("Añadir");
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -305,6 +315,8 @@ public class CitaVeterinaria extends javax.swing.JPanel {
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(33, 36, 46));
+        btnEliminar.setForeground(new java.awt.Color(186, 187, 190));
         btnEliminar.setText("Borrar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -313,6 +325,8 @@ public class CitaVeterinaria extends javax.swing.JPanel {
             }
         });
 
+        btnNuevo.setBackground(new java.awt.Color(33, 36, 46));
+        btnNuevo.setForeground(new java.awt.Color(186, 187, 190));
         btnNuevo.setText("Nuevo");
         btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNuevo.addActionListener(new java.awt.event.ActionListener() {
