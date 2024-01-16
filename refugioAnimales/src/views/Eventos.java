@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-
 import javax.swing.table.DefaultTableModel;
 
 public class Eventos extends javax.swing.JPanel {
@@ -45,10 +44,9 @@ public class Eventos extends javax.swing.JPanel {
                 modelo.addRow(mascota.clone());
             }
             Tabla.setModel(modelo);
-
         } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 
     private void agregar() {
@@ -112,22 +110,18 @@ public class Eventos extends javax.swing.JPanel {
                 st.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Registro eliminado");
                 resetearFormulario();
-
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private void nuevo() {
-
         txtId.setText("");
         txtNombreEvento.setText("");
         txtFecha.setText("");
         txtDescripcionEvento.setText("");
         txtId.requestFocus();
-
     }
 
     private void resetearFormulario() {
@@ -135,7 +129,6 @@ public class Eventos extends javax.swing.JPanel {
         txtNombreEvento.setText("");
         txtFecha.setText("");
         txtDescripcionEvento.setText("");
-
     }
 
     @SuppressWarnings("unchecked")
@@ -203,8 +196,8 @@ public class Eventos extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(tituloEvento)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtNombreEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                                .addComponent(txtNombreEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                                 .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -386,7 +379,6 @@ public class Eventos extends javax.swing.JPanel {
             txtNombreEvento.setText(nombreEventoCadena);
             txtFecha.setText(fechaCadena);
             txtDescripcionEvento.setText(descripcionEventoCadena);
-
         }
     }//GEN-LAST:event_TablaMouseClicked
 

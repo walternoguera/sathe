@@ -54,8 +54,8 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="tituloEvento" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="txtNombreEvento" min="-2" pref="127" max="-2" attributes="0"/>
-                                  <EmptySpace pref="194" max="32767" attributes="0"/>
+                                  <Component id="txtNombreEvento" min="-2" pref="226" max="-2" attributes="0"/>
+                                  <EmptySpace pref="95" max="32767" attributes="0"/>
                                   <Component id="fecha" min="-2" pref="58" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="txtFecha" min="-2" pref="127" max="-2" attributes="0"/>
