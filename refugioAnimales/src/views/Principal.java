@@ -4,150 +4,71 @@ import database.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
-
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
 
 public class Principal extends javax.swing.JPanel {
-
+    
     // Conexión y variables relacionadas con la base de datos
     Connection conet;
     Statement st;
     ResultSet rs;
     int idc;
-
-    // Modelo para la tabla
-    DefaultTableModel modelo;
-
+    
     // Constructor de la clase
     public Principal() {
         initComponents();
-        //consultar();
+        conteoAnimales();
+        conteoVoluntarios();
     }
-/*
+    
     //metodos CRUD
-    private void consultar() {
-        String query = "SELECT * FROM animales";
+    public void conteoAnimales() {
+        String query = "SELECT COUNT(*) FROM animales;";
 
         try {
             conet = Conexion.getConnection();
             st = conet.createStatement();
             rs = st.executeQuery(query);
-            modelo = (DefaultTableModel) Tabla.getModel();
-            modelo.setRowCount(0);
-            Object[] mascota = new Object[6]; //numero de columna de la tabla
-            while (rs.next()) {
-                mascota[0] = rs.getInt("ID");
-                mascota[1] = rs.getString("NOMBRE");
-                mascota[2] = rs.getString("RAZA");
-                mascota[3] = rs.getString("CLASE");
-                mascota[4] = rs.getString("EDAD");
-                mascota[5] = rs.getString("DISPONIBILIDAD");
-
-                modelo.addRow(mascota.clone());
-            }
-            Tabla.setModel(modelo);
-
-        } catch (Exception e) {
-        }
-
-    }
-
-    private void agregar() {
-        String nombreCadena = txtNombre.getText();
-        String razaCadena = txtRaza.getText();
-        String claseCadena = txtClase.getText();
-        String edadCadena = txtEdad.getText();
-        String disponible = txtDisponibilidad.getText();
-
-        try {
-            if (nombreCadena.equals("") || razaCadena.equals("") || claseCadena.equals("") || edadCadena.equals("") || disponible.equals("")) {
-                JOptionPane.showMessageDialog(null, "Por favor, añada los datos");
-                resetearFormulario();
+            
+            
+            if(rs.next()){
+                String resultado = rs.getString(1);
+                infoAnimal.setText(resultado);
             } else {
-
-                String query = "INSERT into animales(nombre, raza, clase, edad, disponibilidad) values ('" + nombreCadena + "', '" + razaCadena + "', '" + claseCadena + "', '" + edadCadena + "', '" + disponible + "' )";
-                conet = Conexion.getConnection();
-                st = conet.createStatement();
-                st.executeUpdate(query);
-                JOptionPane.showMessageDialog(null, "Nuevo registro agregado");
-                //consultar();
-                resetearFormulario();
+                infoAnimal.setText("0");
+   
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    private void modificar() {
-        String nombreCadena = txtNombre.getText();
-        String razaCadena = txtRaza.getText();
-        String claseCadena = txtClase.getText();
-        String edadCadena = txtEdad.getText();
-        String disponible = txtDisponibilidad.getText();
+    
+    public void conteoVoluntarios() {
+        String query = "SELECT COUNT(*) FROM voluntarios;";
 
         try {
-            if (nombreCadena.equals("") || razaCadena.equals("") || claseCadena.equals("") || edadCadena.equals("") || disponible.equals("")) {
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione el registro que deseas modificar");
-                resetearFormulario();
+            conet = Conexion.getConnection();
+            st = conet.createStatement();
+            rs = st.executeQuery(query);
+            
+            
+            if(rs.next()){
+                String resultado = rs.getString(1);
+                infoVoluntarios.setText(resultado);
             } else {
-
-                String query = "UPDATE animales SET nombre='" + nombreCadena + "', raza='" + razaCadena + "', clase='" + claseCadena + "', edad='" + edadCadena + "', disponibilidad='" + disponible + "' WHERE ID=" + idc;
-                conet = Conexion.getConnection();
-                st = conet.createStatement();
-                st.executeUpdate(query);
-                JOptionPane.showMessageDialog(null, "Registro modificado");
-                //consultar();
-                resetearFormulario();
+                infoVoluntarios.setText("0");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    private void eliminar() {
-        int fila = Tabla.getSelectedRow();
-        try {
-            if (fila < 0) {
-                JOptionPane.showMessageDialog(null, "Por favor, selecciona un registro");
-                resetearFormulario();
-            } else {
-                String query = "delete from animales where id=" + idc;
-                conet = Conexion.getConnection();
-                st = conet.createStatement();
-                st.executeUpdate(query);
-                JOptionPane.showMessageDialog(null, "Registro eliminado");
-                resetearFormulario();
-
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public void getLabelInfoAnimal(){
+         conteoAnimales();
+    }
+    public void getLabelInfoVoluntarios(){
+        conteoVoluntarios();
     }
 
-    private void nuevo() {
-
-        txtId.setText("");
-        txtNombre.setText("");
-        txtRaza.setText("");
-        txtClase.setText("");
-        txtEdad.setText("");
-        txtDisponibilidad.setText("");
-        txtId.requestFocus();
-
-    }
-
-    private void resetearFormulario() {
-        txtId.setText("");
-        txtNombre.setText("");
-        txtRaza.setText("");
-        txtClase.setText("");
-        txtEdad.setText("");
-        txtDisponibilidad.setText("");
-
-    }
-*/
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -157,7 +78,13 @@ public class Principal extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        panelInfoANimal = new javax.swing.JPanel();
+        infoAnimal = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        dashboard = new javax.swing.JLabel();
+        panelInfoVoluntarios = new javax.swing.JPanel();
+        infoVoluntarios = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(246, 246, 246));
         setToolTipText("datos");
@@ -194,7 +121,7 @@ public class Principal extends javax.swing.JPanel {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(jLabel5)
-                                .addGap(0, 136, Short.MAX_VALUE))
+                                .addGap(0, 126, Short.MAX_VALUE))
                             .addComponent(jSeparator1))))
                 .addContainerGap())
         );
@@ -212,21 +139,103 @@ public class Principal extends javax.swing.JPanel {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 740, 300));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 730, 300));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel4.setText("Panel principal");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        panelInfoANimal.setBackground(new java.awt.Color(33, 36, 46));
+
+        infoAnimal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
+        infoAnimal.setForeground(new java.awt.Color(204, 204, 204));
+        infoAnimal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(186, 187, 190));
+        jLabel4.setText("Animales");
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        javax.swing.GroupLayout panelInfoANimalLayout = new javax.swing.GroupLayout(panelInfoANimal);
+        panelInfoANimal.setLayout(panelInfoANimalLayout);
+        panelInfoANimalLayout.setHorizontalGroup(
+            panelInfoANimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoANimalLayout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(panelInfoANimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoANimalLayout.createSequentialGroup()
+                        .addComponent(infoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoANimalLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        panelInfoANimalLayout.setVerticalGroup(
+            panelInfoANimalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoANimalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infoAnimal, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        add(panelInfoANimal, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 390, 120, -1));
+
+        dashboard.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        dashboard.setForeground(new java.awt.Color(102, 102, 102));
+        dashboard.setText("Dashboard");
+        add(dashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        panelInfoVoluntarios.setBackground(new java.awt.Color(33, 36, 46));
+
+        infoVoluntarios.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
+        infoVoluntarios.setForeground(new java.awt.Color(204, 204, 204));
+        infoVoluntarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(186, 187, 190));
+        jLabel6.setText("Voluntarios");
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel6.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        javax.swing.GroupLayout panelInfoVoluntariosLayout = new javax.swing.GroupLayout(panelInfoVoluntarios);
+        panelInfoVoluntarios.setLayout(panelInfoVoluntariosLayout);
+        panelInfoVoluntariosLayout.setHorizontalGroup(
+            panelInfoVoluntariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoVoluntariosLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(panelInfoVoluntariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoVoluntariosLayout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInfoVoluntariosLayout.createSequentialGroup()
+                        .addComponent(infoVoluntarios, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28))))
+        );
+        panelInfoVoluntariosLayout.setVerticalGroup(
+            panelInfoVoluntariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoVoluntariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(infoVoluntarios, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        add(panelInfoVoluntarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel dashboard;
+    private javax.swing.JLabel infoAnimal;
+    private javax.swing.JLabel infoVoluntarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel panelInfoANimal;
+    private javax.swing.JPanel panelInfoVoluntarios;
     // End of variables declaration//GEN-END:variables
 }
