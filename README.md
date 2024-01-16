@@ -4,8 +4,11 @@ Mini proyecto de Navidad.
 Este sistema de gestión está diseñado específicamente para un refugio de animales. Facilita la administración del proceso de adopción de mascotas al permitir a los usuarios elegir un compañero según su **raza** o **tipo**. Además, brinda la capacidad de **consultar, agregar, modificar o eliminar** fácilmente cualquier registro en la base de datos.
 
 La plataforma también incorpora una sección dedicada a la gestión de **voluntarios**, donde es posible **agregar** o **eliminar** participantes según su disponibilidad y habilidades. Esta funcionalidad contribuye a optimizar la **colaboración** y **participación** de aquellos interesados en contribuir al refugio.
+![imagen](https://github.com/walternoguera/sathe/assets/29197564/84b352d9-99f5-4609-b9a5-8676d52b4eaf)
 
-![cap1](https://github.com/walternoguera/sathe/assets/29197564/15135f23-3d8d-4b84-b410-d36f4cc320e3)
+![cap5](https://github.com/walternoguera/sathe/assets/29197564/004f166a-3513-4865-b517-cb39b6e5cd90)
+
+
 
 
 
