@@ -1,6 +1,7 @@
 package controlador;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import views.*;
 
 public class Dashboard extends javax.swing.JFrame {
@@ -403,7 +404,7 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrincipalActionPerformed
 
     private void btnPrincipalMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrincipalMouseMoved
-        btnPrincipal.setBackground(java.awt.Color.WHITE);
+        btnPrincipal.setBackground(Color.red);
     }//GEN-LAST:event_btnPrincipalMouseMoved
 
     private void btnDonacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonacionesActionPerformed

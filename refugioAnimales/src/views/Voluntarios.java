@@ -79,10 +79,10 @@ public class Voluntarios extends javax.swing.JPanel {
 
     private void modificar() {
         String nombreCadena = txtNombre.getText();
-        String telefonoCadena = txtTelefono.getText();
-        String localidadCadena = txtLocalidad.getText();
+        String telefonoCadena = txtApellidos.getText();
+        String localidadCadena = txtTelefono.getText();
         String habilidadCadena = txtHabilidad.getText();
-        String apellidosCadena = txtApellidos.getText();
+        String apellidosCadena = txtLocalidad.getText();
 
         try {
             if (nombreCadena.equals("") || telefonoCadena.equals("") || localidadCadena.equals("") || habilidadCadena.equals("") || apellidosCadena.equals("")) {
@@ -90,7 +90,7 @@ public class Voluntarios extends javax.swing.JPanel {
                 resetearFormulario();
             } else {
 
-                String query = "UPDATE voluntarios SET nombre='" + nombreCadena + "', telefono='" + telefonoCadena + "', localidad='" + localidadCadena + "', habilidades='" + habilidadCadena + "', apellidos='" + apellidosCadena + "' WHERE ID=" + idc;
+                String query = "UPDATE voluntarios SET nombre='" + nombreCadena + "', apellidos='" + apellidosCadena + "', telefono='" + telefonoCadena + "', habilidades='" + habilidadCadena + "', localidad='" + localidadCadena + "' WHERE ID=" + idc;
                 conet = Conexion.getConnection();
                 st = conet.createStatement();
                 st.executeUpdate(query);
@@ -205,10 +205,10 @@ public class Voluntarios extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
+                        .addGap(183, 183, 183)
                         .addComponent(habilidades))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,21 +219,22 @@ public class Voluntarios extends javax.swing.JPanel {
                                 .addComponent(telefono)
                                 .addGap(42, 42, 42)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtHabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtHabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(100, 100, 100))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(apellidos)
                             .addComponent(localidad))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)))
-                .addGap(100, 100, 100))
+                        .addGap(94, 94, 94))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,18 +249,26 @@ public class Voluntarios extends javax.swing.JPanel {
                     .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(telefono)
-                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(telefono)
+                                .addGap(28, 28, 28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
                         .addComponent(habilidades)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(localidad)
-                            .addComponent(txtLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(localidad))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(txtLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(txtHabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
@@ -403,17 +412,17 @@ public class Voluntarios extends javax.swing.JPanel {
         } else {
             idc = Integer.parseInt((String) Tabla.getValueAt(fila, 0).toString());
             String nombreCadena = (String) Tabla.getValueAt(fila, 1).toString();
-            String telefonoCadena = (String) Tabla.getValueAt(fila, 2).toString();
-            String localidadCadena = (String) Tabla.getValueAt(fila, 3).toString();
+            String apellidosCadena = (String) Tabla.getValueAt(fila, 2).toString();
+            String telefonoCadena = (String) Tabla.getValueAt(fila, 3).toString();
             String habilidadCadena = (String) Tabla.getValueAt(fila, 4).toString();
-            String apellidosCadena = (String) Tabla.getValueAt(fila, 5).toString();
+            String localidadCadena = (String) Tabla.getValueAt(fila, 5).toString();
 
             txtId.setText("" + idc);
             txtNombre.setText(nombreCadena);
-            txtTelefono.setText(telefonoCadena);
-            txtLocalidad.setText(localidadCadena);
-            txtHabilidad.setText(habilidadCadena);
             txtApellidos.setText(apellidosCadena);
+            txtTelefono.setText(telefonoCadena);
+            txtHabilidad.setText(habilidadCadena);
+            txtLocalidad.setText(localidadCadena);
         }
     }//GEN-LAST:event_TablaMouseClicked
 
