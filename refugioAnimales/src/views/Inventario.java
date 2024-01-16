@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-
 import javax.swing.table.DefaultTableModel;
 
 public class Inventario extends javax.swing.JPanel {
@@ -47,10 +46,9 @@ public class Inventario extends javax.swing.JPanel {
                 modelo.addRow(mascota.clone());
             }
             Tabla.setModel(modelo);
-
         } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 
     private void agregar() {
@@ -97,7 +95,7 @@ public class Inventario extends javax.swing.JPanel {
                 st = conet.createStatement();
                 st.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Registro modificado");
-                //consultar();
+                consultar();
                 resetearFormulario();
             }
         } catch (Exception e) {
@@ -118,16 +116,13 @@ public class Inventario extends javax.swing.JPanel {
                 st.executeUpdate(query);
                 JOptionPane.showMessageDialog(null, "Registro eliminado");
                 resetearFormulario();
-
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private void nuevo() {
-
         txtId.setText("");
         txtNombre.setText("");
         txtRaza.setText("");
@@ -135,7 +130,6 @@ public class Inventario extends javax.swing.JPanel {
         txtEdad.setText("");
         txtDisponibilidad.setText("");
         txtId.requestFocus();
-
     }
 
     private void resetearFormulario() {
@@ -145,7 +139,6 @@ public class Inventario extends javax.swing.JPanel {
         txtClase.setText("");
         txtEdad.setText("");
         txtDisponibilidad.setText("");
-
     }
 
     @SuppressWarnings("unchecked")
@@ -426,7 +419,6 @@ public class Inventario extends javax.swing.JPanel {
             txtClase.setText(claseCadena);
             txtEdad.setText("" + edadCadena);
             txtDisponibilidad.setText(disponible);
-
         }
     }//GEN-LAST:event_TablaMouseClicked
 
