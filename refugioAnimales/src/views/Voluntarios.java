@@ -80,11 +80,11 @@ public class Voluntarios extends javax.swing.JPanel {
     }
 
     private void modificar() {
-        String nombreCadena = txtNombre.getText();
-        String telefonoCadena = txtApellidos.getText();
-        String localidadCadena = txtTelefono.getText();
-        String habilidadCadena = txtHabilidad.getText();
-        String apellidosCadena = txtLocalidad.getText();
+    String nombreCadena = txtNombre.getText();
+    String apellidosCadena = txtApellidos.getText();
+    String telefonoCadena = txtTelefono.getText();
+    String habilidadCadena = txtHabilidad.getText();
+    String localidadCadena = txtLocalidad.getText();
 
         try {
             if (nombreCadena.equals("") || telefonoCadena.equals("") || localidadCadena.equals("") || habilidadCadena.equals("") || apellidosCadena.equals("")) {
@@ -271,14 +271,11 @@ public class Voluntarios extends javax.swing.JPanel {
                         .addComponent(habilidades)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addComponent(localidad))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(localidad))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addComponent(txtHabilidad, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
