@@ -114,6 +114,7 @@ public class CitaVeterinaria extends javax.swing.JPanel {
             e.printStackTrace();
         }
     }
+    
 
     private void nuevo() {
         txtId.setText("");
