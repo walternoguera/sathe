@@ -108,6 +108,7 @@ public class Adopcion extends javax.swing.JPanel {
         try {
             if (fila < 0) {
                 JOptionPane.showMessageDialog(null, "Por favor, selecciona un registro");
+                JOptionPane.getRootFrame().setLocationRelativeTo(this);
                 resetearFormulario();
             } else {
                 String query = "delete from animales where id=" + idc;
