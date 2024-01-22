@@ -4,6 +4,7 @@ import database.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -61,6 +62,7 @@ public class Voluntarios extends javax.swing.JPanel {
         try {
             if (nombreCadena.equals("") || telefonoCadena.equals("") || localidadCadena.equals("") || habilidadCadena.equals("") || apellidosCadena.equals("")) {
                 JOptionPane.showMessageDialog(null, "Por favor, añada los datos");
+                JOptionPane.getRootFrame().setLocationRelativeTo(this);
                 resetearFormulario();
             } else {
 
@@ -107,7 +109,8 @@ public class Voluntarios extends javax.swing.JPanel {
         int fila = Tabla.getSelectedRow();
         try {
             if (fila < 0) {
-                JOptionPane.showMessageDialog(null, "Por favor, selecciona un registro");
+                //JOptionPane.showMessageDialog(null, "Por favor, selecciona un registro");
+                mostrarDialogo("Por favor, selecciona un registro");
                 resetearFormulario();
             } else {
                 String query = "delete from voluntarios where id=" + idc;
@@ -140,6 +143,13 @@ public class Voluntarios extends javax.swing.JPanel {
         txtHabilidad.setText("");
         txtApellidos.setText("");
     }
+    
+    private void mostrarDialogo(String mensaje) {
+    JOptionPane optionPane = new JOptionPane(mensaje, JOptionPane.WARNING_MESSAGE);
+    JDialog dialog = optionPane.createDialog(this, "Mensaje");
+    dialog.setLocationRelativeTo(this);
+    dialog.setVisible(true);
+}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
