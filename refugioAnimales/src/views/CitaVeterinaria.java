@@ -1,3 +1,11 @@
+/**
+ * Clase que representa la interfaz gráfica para gestionar citas veterinarias.
+ * Permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre las citas veterinarias.
+ *
+ * @author Walter Morel Noguera
+ * @version 1.0
+ * @see <a href="https://www.github.com/walternoguera">Repositorio en GitHub</a>
+ */
 package views;
 
 import database.Conexion;
@@ -10,21 +18,50 @@ import javax.swing.table.DefaultTableModel;
 public class CitaVeterinaria extends javax.swing.JPanel {
 
     // Conexión y variables relacionadas con la base de datos
+    /**
+ * Variables relacionadas con la conexión a la base de datos y la gestión de datos de citas veterinarias.
+ * - {@code conet}: Representa la conexión a la base de datos.
+ * - {@code st}: Representa el objeto Statement para ejecutar consultas SQL.
+ * - {@code rs}: Representa el conjunto de resultados obtenidos de una consulta SQL.
+ * - {@code idc}: Almacena el identificador de la cita veterinaria actualmente seleccionada.
+ *
+ * @see CitaVeterinaria
+ */
     Connection conet;
     Statement st;
     ResultSet rs;
     int idc;
 
     // Modelo para la tabla
+    /**
+ * Modelo utilizado para la representación y manipulación de datos en la tabla de citas veterinarias.
+ * Permite gestionar la estructura y contenido de la tabla en la interfaz gráfica.
+ *
+ * @see CitaVeterinaria
+ */
     DefaultTableModel modelo;
 
     // Constructor de la clase
+    /**
+ * Constructor de la clase CitaVeterinaria.
+ * Inicializa los componentes de la interfaz gráfica y realiza la consulta inicial de datos.
+ */
     public CitaVeterinaria() {
         initComponents();
         consultar();
     }
 
     //metodos CRUD
+    /**
+ * Realiza una consulta a la base de datos para obtener todas las citas veterinarias.
+ * Actualiza el modelo de la tabla con los resultados de la consulta.
+ *
+ * La consulta SQL selecciona todas las columnas de la tabla "citas_veterinarias".
+ * Los resultados se utilizan para actualizar el modelo de la tabla en la interfaz gráfica.
+ *
+ * @throws Exception Si ocurre un error durante la consulta o la actualización de la tabla.
+ * @see CitaVeterinaria
+ */
     private void consultar() {
         String query = "SELECT * FROM citas_veterinarias";
 
@@ -48,6 +85,16 @@ public class CitaVeterinaria extends javax.swing.JPanel {
         }
     }
 
+    /**
+ * Agrega una nueva cita veterinaria a la base de datos.
+ * Obtiene los datos desde los campos de texto en la interfaz gráfica.
+ * Realiza validaciones antes de realizar la inserción.
+ * Después de agregar el registro, actualiza la tabla y resetea el formulario.
+ *
+ * @throws Exception Si ocurre un error durante la inserción o consulta de datos.
+ * @see CitaVeterinaria#consultar()
+ * @see CitaVeterinaria#resetearFormulario()
+ */
     private void agregar() {
         String idAnimalCadena = txtIdAnimal.getText();
         String fechaCadena = txtFecha.getText();
@@ -72,6 +119,15 @@ public class CitaVeterinaria extends javax.swing.JPanel {
         }
     }
 
+    /**
+ * Modifica una cita veterinaria existente en la base de datos.
+ * Obtiene los datos desde los campos de texto en la interfaz gráfica.
+ * Realiza validaciones antes de realizar la actualización.
+ * Después de modificar el registro, actualiza la tabla.
+ *
+ * @throws Exception Si ocurre un error durante la actualización o consulta de datos.
+ * @see CitaVeterinaria#consultar()
+ */
     private void modificar() {
         String idAnimalCadena = txtIdAnimal.getText();
         String fechaCadena = txtFecha.getText();
@@ -96,6 +152,16 @@ public class CitaVeterinaria extends javax.swing.JPanel {
         }
     }
 
+    /**
+ * Elimina una cita veterinaria de la base de datos.
+ * Obtiene el índice de la fila seleccionada en la tabla.
+ * Realiza validaciones antes de realizar la eliminación.
+ * Después de eliminar el registro, actualiza la tabla y resetea el formulario.
+ *
+ * @throws Exception Si ocurre un error durante la eliminación o consulta de datos.
+ * @see CitaVeterinaria#consultar()
+ * @see CitaVeterinaria#resetearFormulario()
+ */
     private void eliminar() {
         int fila = Tabla.getSelectedRow();
         try {
@@ -116,6 +182,12 @@ public class CitaVeterinaria extends javax.swing.JPanel {
     }
     
 
+    /**
+ * Prepara el formulario para ingresar una nueva cita veterinaria.
+ * Limpia los campos de texto y establece el foco en el campo de ID.
+ *
+ * @see CitaVeterinaria
+ */
     private void nuevo() {
         txtId.setText("");
         txtIdAnimal.setText("");
@@ -124,6 +196,12 @@ public class CitaVeterinaria extends javax.swing.JPanel {
         txtId.requestFocus();
     }
 
+    /**
+ * Restablece el formulario de la interfaz gráfica para su estado inicial.
+ * Limpia todos los campos de texto.
+ *
+ * @see CitaVeterinaria
+ */
     private void resetearFormulario() {
         txtId.setText("");
         txtIdAnimal.setText("");
@@ -336,27 +414,66 @@ public class CitaVeterinaria extends javax.swing.JPanel {
         jLabel5.setText("Cita Veterinaria");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+/**
+ * Maneja el evento de clic en el botón "Agregar".
+ * Invoca el método {@code agregar()} para añadir una nueva cita veterinaria.
+ *
+ * @param evt Objeto que representa el evento de clic en el botón.
+ * @see CitaVeterinaria#agregar()
+ */
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         agregar();
     }//GEN-LAST:event_btnAgregarActionPerformed
+/**
+ * Maneja el evento de clic en el botón "Modificar".
+ * Invoca el método {@code modificar()} para actualizar una cita veterinaria.
+ * Después de la modificación, se realiza una nueva consulta, y se establece un nuevo estado en el formulario.
+ *
+ * @param evt Objeto que representa el evento de clic en el botón.
+ * @see CitaVeterinaria#modificar()
+ * @see CitaVeterinaria#consultar()
+ * @see CitaVeterinaria#nuevo()
+ */
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         modificar();
         consultar();
         nuevo();
     }//GEN-LAST:event_btnModificarActionPerformed
-
+/**
+ * Maneja el evento de clic en el botón "Eliminar".
+ * Invoca el método {@code eliminar()} para borrar una cita veterinaria.
+ * Después de la eliminación, se realiza una nueva consulta y se establece un nuevo estado en el formulario.
+ *
+ * @param evt Objeto que representa el evento de clic en el botón.
+ * @see CitaVeterinaria#eliminar()
+ * @see CitaVeterinaria#consultar()
+ * @see CitaVeterinaria#nuevo()
+ */
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         eliminar();
         consultar();
         nuevo();
     }//GEN-LAST:event_btnEliminarActionPerformed
-
+    /**
+ * Maneja el evento de clic en el botón "Nuevo".
+ * Invoca el método {@code nuevo()} para preparar el formulario para ingresar una nueva cita veterinaria.
+ *
+ * @param evt Objeto que representa el evento de clic en el botón.
+ * @see CitaVeterinaria#nuevo()
+ */
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         nuevo();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
+    /**
+ * Maneja el evento de clic en una fila de la tabla.
+ * Obtiene la información de la fila seleccionada y la muestra en los campos de texto del formulario.
+ *
+ * @param evt Objeto que representa el evento de clic en una fila de la tabla.
+ * @see CitaVeterinaria
+ */
     private void TablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaMouseClicked
         int fila = Tabla.getSelectedRow();
         if (fila == -1) {
